@@ -1,6 +1,7 @@
 {
-  "watchFolder": "incoming",
-  "outputFolder": "sprites",
+  "watchFolder": "~/Documents/LocalSend",
+  "outputFolder": "~/Documents/Sprites",
+  "csvPath": "processed.csv",
 
   "sprite": {
     "columns": 4,

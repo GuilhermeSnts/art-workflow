@@ -5,6 +5,21 @@ import { loadConfig } from "./config";
 import { ensureCsv } from "./csv";
 import { startWatcher } from "./watcher";
 
+function ensurePathExists(
+  folderPath: string
+) {
+  if (!fs.existsSync(folderPath)) {
+    fs.mkdirSync(folderPath, {
+      recursive: true
+    });
+
+    console.log(
+      "[INIT] pasta criada:",
+      folderPath
+    );
+  }
+}
+
 function ensureFolders() {
   const folders = [
     "incoming",
@@ -33,11 +48,12 @@ async function bootstrap() {
   console.log(" SPRITE ROBOT ");
   console.log("====================");
 
-  ensureFolders();
-
-  ensureCsv();
-
   const config = loadConfig();
+
+  ensurePathExists(config.watchFolder);
+  ensurePathExists(config.outputFolder);
+
+  ensureCsv(config.csvPath);
 
   startWatcher(config);
 }

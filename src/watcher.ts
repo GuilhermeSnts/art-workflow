@@ -25,7 +25,10 @@ export function startWatcher(
 
     const fileName = path.basename(filePath);
 
-    if (isProcessed(fileName)) {
+    if (isProcessed(
+      config.csvPath,
+      fileName
+    )) {
       console.log(
         "[WATCHER] já processado:",
         fileName

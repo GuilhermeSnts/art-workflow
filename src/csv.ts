@@ -1,12 +1,11 @@
 import fs from "node:fs";
-import path from "node:path";
 
-const CSV_PATH = path.resolve("processed.csv");
-
-export function ensureCsv() {
-  if (!fs.existsSync(CSV_PATH)) {
+export function ensureCsv(
+  csvPath: string
+) {
+  if (!fs.existsSync(csvPath)) {
     fs.writeFileSync(
-      CSV_PATH,
+      csvPath,
       "input,output\n"
     );
 
@@ -14,18 +13,25 @@ export function ensureCsv() {
   }
 }
 
-export function isProcessed(input: string): boolean {
-  const content = fs.readFileSync(CSV_PATH, "utf-8");
+export function isProcessed(
+  csvPath: string,
+  input: string
+): boolean {
+  const content = fs.readFileSync(
+    csvPath,
+    "utf-8"
+  );
 
   return content.includes(input);
 }
 
 export function appendCsv(
+  csvPath: string,
   input: string,
   output: string
 ) {
   fs.appendFileSync(
-    CSV_PATH,
+    csvPath,
     `${input},${output}\n`
   );
 }

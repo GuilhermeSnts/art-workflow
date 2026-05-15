@@ -103,9 +103,9 @@ export async function processZip(
   );
 
   appendCsv(
-    path.basename(zipPath),
-    `${safeName}.png`
-  );
-
+  config.csvPath,
+  path.basename(zipPath),
+  `${safeName}.png`
+);
   console.log("[DONE]", outputPath);
 }

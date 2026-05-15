@@ -2,4 +2,6 @@
 /node_modules
 /dist
 /sprites
+
 processed.csv
+TODO.md
