@@ -2,6 +2,8 @@
   "watchFolder": "~/Documents/LocalSend",
   "outputFolder": "~/Documents/Sprites",
   "csvPath": "processed.csv",
+  "generateAtlas": true,
+  "maxWorkers": 2,
 
   "sprite": {
     "columns": 4,

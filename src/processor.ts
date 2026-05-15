@@ -6,6 +6,7 @@ import sharp from "sharp";
 
 import { AppConfig } from "./types";
 import { appendCsv } from "./csv";
+import { createAtlas } from "./atlas";
 
 export async function processZip(
   zipPath: string,
@@ -102,10 +103,24 @@ export async function processZip(
     resizedBuffer
   );
 
+  let atlasPath: string | undefined;
+
+  if (config.generateAtlas) {
+    atlasPath = await createAtlas(
+      outputPath,
+      config,
+      frameWidth,
+      frameHeight,
+      images.length
+    );
+  }
+
   appendCsv(
-  config.csvPath,
-  path.basename(zipPath),
-  `${safeName}.png`
-);
+    config.csvPath,
+    path.basename(zipPath),
+    `${safeName}.png`,
+    atlasPath
+  );
+
   console.log("[DONE]", outputPath);
 }

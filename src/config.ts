@@ -52,9 +52,12 @@ export function loadConfig(): AppConfig {
     config.csvPath
   );
 
+  const generateAtlas = config.generateAtlas === true;
+
   config.watchFolder = resolveUserPath(watchFolder);
   config.outputFolder = resolveUserPath(outputFolder);
   config.csvPath = resolveUserPath(csvPath);
+  config.generateAtlas = generateAtlas;
 
   return config;
 }

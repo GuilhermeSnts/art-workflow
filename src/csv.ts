@@ -1,12 +1,20 @@
 import fs from "node:fs";
 
+function escapeCsv(value: string) {
+  if (value.includes("\n") || value.includes(",") || value.includes('"')) {
+    return `"${value.replace(/"/g, '""')}"`;
+  }
+
+  return value;
+}
+
 export function ensureCsv(
   csvPath: string
 ) {
   if (!fs.existsSync(csvPath)) {
     fs.writeFileSync(
       csvPath,
-      "input,output\n"
+      "input,output,atlas\n"
     );
 
     console.log("[CSV] criado");
@@ -28,10 +36,11 @@ export function isProcessed(
 export function appendCsv(
   csvPath: string,
   input: string,
-  output: string
+  output: string,
+  atlas?: string
 ) {
   fs.appendFileSync(
     csvPath,
-    `${input},${output}\n`
+    `${escapeCsv(input)},${escapeCsv(output)},${escapeCsv(atlas ?? "")}\n`
   );
 }
