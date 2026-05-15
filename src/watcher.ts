@@ -1,5 +1,5 @@
 import chokidar from "chokidar";
-import path from "node:path";
+import path from "path";
 
 import { AppConfig } from "./types";
 import { isProcessed } from "./csv";

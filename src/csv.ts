@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs from "fs";
 
 function escapeCsv(value: string) {
   if (value.includes("\n") || value.includes(",") || value.includes('"')) {

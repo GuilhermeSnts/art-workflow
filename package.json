@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/main.ts",
-    "build": "tsc",
-    "start": "node dist/main.js"
+    "dev": "bun run src/main.ts",
+    "build": "bun build ./src/main.ts --outdir ./dist --target node",
+    "compile": "bun build ./src/main.ts --compile --outfile ./release/sprite-robot --target node"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "adm-zip": "^0.5.17",
     "chokidar": "^5.0.0",
@@ -20,7 +20,6 @@
   "devDependencies": {
     "@types/adm-zip": "^0.5.8",
     "@types/node": "^25.8.0",
-    "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
   }
 }
