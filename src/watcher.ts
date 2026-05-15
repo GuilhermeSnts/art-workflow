@@ -1,0 +1,46 @@
+import chokidar from "chokidar";
+import path from "node:path";
+
+import { AppConfig } from "./types";
+import { isProcessed } from "./csv";
+import { processZip } from "./processor";
+
+export function startWatcher(
+  config: AppConfig
+) {
+  console.log("[WATCHER] iniciado");
+
+  const watcher = chokidar.watch(
+    config.watchFolder,
+    {
+      ignoreInitial: false,
+      persistent: true
+    }
+  );
+
+  watcher.on("add", async (filePath) => {
+    if (!filePath.endsWith(".zip")) {
+      return;
+    }
+
+    const fileName = path.basename(filePath);
+
+    if (isProcessed(fileName)) {
+      console.log(
+        "[WATCHER] já processado:",
+        fileName
+      );
+
+      return;
+    }
+
+    try {
+      await processZip(filePath, config);
+    } catch (err) {
+      console.error(
+        "[WATCHER] erro:",
+        err
+      );
+    }
+  });
+}

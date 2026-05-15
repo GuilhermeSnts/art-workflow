@@ -1,0 +1,10 @@
+{
+  "watchFolder": "incoming",
+  "outputFolder": "sprites",
+
+  "sprite": {
+    "columns": 4,
+    "scale": 0.5,
+    "gap": 0
+  }
+}
