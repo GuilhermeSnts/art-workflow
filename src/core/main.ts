@@ -1,5 +1,5 @@
 import fs from "fs";
-import path from "path";
+// import path from "path";
 
 import { loadConfig } from "./config";
 import { ensureCsv } from "./csv";
@@ -20,28 +20,28 @@ function ensurePathExists(
   }
 }
 
-function ensureFolders() {
-  const folders = [
-    "incoming",
-    "sprites",
-    "temp"
-  ];
+// function ensureFolders() {
+//   const folders = [
+//     "incoming",
+//     "sprites",
+//     "temp"
+//   ];
 
-  for (const folder of folders) {
-    const fullPath = path.resolve(folder);
+//   for (const folder of folders) {
+//     const fullPath = path.resolve(folder);
 
-    if (!fs.existsSync(fullPath)) {
-      fs.mkdirSync(fullPath, {
-        recursive: true
-      });
+//     if (!fs.existsSync(fullPath)) {
+//       fs.mkdirSync(fullPath, {
+//         recursive: true
+//       });
 
-      console.log(
-        "[INIT] pasta criada:",
-        folder
-      );
-    }
-  }
-}
+//       console.log(
+//         "[INIT] pasta criada:",
+//         folder
+//       );
+//     }
+//   }
+// }
 
 async function bootstrap() {
   console.log("====================");
