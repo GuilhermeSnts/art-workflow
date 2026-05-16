@@ -14,7 +14,12 @@ export function startWatcher(
     config.watchFolder,
     {
       ignoreInitial: false,
-      persistent: true
+      persistent: true,
+      
+      awaitWriteFinish: {
+        stabilityThreshold: 3000,
+        pollInterval: 250
+      }
     }
   );
 
